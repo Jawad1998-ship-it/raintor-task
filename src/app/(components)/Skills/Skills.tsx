@@ -69,7 +69,7 @@ const SkillCard = ({
 
 const Skills = () => {
   return (
-    <section className="bg-black text-white py-[70px] rounded-[40px]">
+    <section className="bg-black text-white py-[70px] ps-[65px] pe-[35px] rounded-[40px]">
       <div className="container mx-auto">
         <header className="flex flex-col md:flex-row justify-between items-start gap-8">
           <button className="flex items-center gap-3 border border-gray-700 rounded-full py-2 px-5 text-sm hover:bg-gray-800 transition-colors">
@@ -115,7 +115,7 @@ const Skills = () => {
             </div>
 
             <div className="flex flex-col gap-4 lg:flex-row mt-[64px] lg:items-center">
-              {skillsData.map((skill, index) => {
+              {skillsData?.map((skill, index) => {
                 const isMiddleCard = index === 1;
                 const isLastCard = index === skillsData.length - 1;
 

@@ -52,7 +52,7 @@ const ProcessCard = ({
       variants={cardVariants}
       whileHover={!isHighlighted ? "hover" : ""}
       transition={{ type: "spring", stiffness: 300 }}
-      className="h-[280px] w-[635px] flex flex-col items-between justify-center gap-8 px-8 rounded-[30px]"
+      className="w-full max-w-[635px] aspect-[635/280] flex flex-col items-between justify-center gap-8 px-8 rounded-[30px] sm:text-sm"
       style={{
         backgroundColor: highlightedStyles.backgroundColor,
         color: highlightedStyles.textColor,
@@ -63,7 +63,7 @@ const ProcessCard = ({
     >
       <div className="flex justify-between items-center mb-4">
         <span
-          className={`${sportingGrotesque.className} rounded-[20px] flex items-center justify-center pt-1 text-[1.25rem] font-normal leading-[34px] tracking-[0%] h-[40px] w-[191px]`}
+          className={`${sportingGrotesque.className} rounded-[20px] flex items-center justify-center pt-1 text-[1.25rem] sm:text-[1rem] font-normal leading-[34px] tracking-[0%] h-[40px] w-[191px] sm:w-[150px]`}
           style={{
             backgroundColor: isHighlighted ? "#111111" : bgColor,
             color: isHighlighted ? "#D4FF40" : textColor,
@@ -73,14 +73,14 @@ const ProcessCard = ({
         </span>
         <a href="#" className="flex items-center space-x-2 group">
           <span
-            className={`${sportingGrotesque.className} text-[1rem] font-normal leading-[18px] tracking-[-0.02em] group-hover:underline`}
+            className={`${sportingGrotesque.className} text-[1rem] sm:text-[0.875rem] font-normal leading-[18px] tracking-[-0.02em] group-hover:underline`}
           >
             → Read More
           </span>
         </a>
       </div>
       <p
-        className={`${sportingGrotesque.className} text-[1.125rem] font-normal leading-[33px] tracking-[0%]`}
+        className={`${sportingGrotesque.className} text-[1.125rem] sm:text-[0.875rem] font-normal leading-[33px] sm:leading-[24px] tracking-[0%]`}
       >
         {description}
       </p>

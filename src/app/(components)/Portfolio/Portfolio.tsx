@@ -4,41 +4,46 @@ import { sportingGrotesque } from "../../fonts";
 const brandsData = [
   {
     name: "awwwards.",
-    transform: "rotate-[15deg] -translate-y-2 -translate-x-6",
+    position: { top: "22px", left: "210px" },
     special: true,
     width: "267.7px",
     height: "90px",
+    rotation: "12deg",
   },
   {
     name: "CSS WINNER",
-    transform: "translate-y-22 -translate-x-95",
+    position: { top: "120px", left: "139px" },
     width: "276px",
     height: "90px",
+    rotation: "0deg",
   },
   {
     name: "/thoughtworks",
-    transform: "rotate-[-12deg] translate-y-17 -translate-x-87",
+    position: { top: "101px", left: "410px" },
     width: "293.23px",
     height: "88.44px",
+    rotation: "-15deg",
   },
   {
     name: "facebook",
-    transform:
-      "-translate-y-10 -translate-x-104 lg:-translate-y-32 lg:translate-x-104",
+    position: { top: "-15px", left: "570px" },
     width: "276px",
     height: "90px",
+    rotation: "0deg",
   },
   {
     name: "AUTODESK",
-    transform: "translate-y-1 translate-x-49",
+    position: { top: "105px", left: "694px" },
     width: "276px",
     height: "90px",
+    rotation: "0deg",
   },
   {
     name: "CSSDesignAwards",
-    transform: "rotate-[16deg] -translate-y-15 translate-x-31",
+    position: { top: "30px", left: "838px" },
     width: "276px",
     height: "90px",
+    rotation: "25deg",
     logo: (
       <svg className="w-4 h-4 mr-2" viewBox="0 0 24 24" fill="currentColor">
         <path d="M12 2l2.35 7.18h7.55l-6.1 4.44 2.35 7.18-6.1-4.44-6.1 4.44 2.35-7.18-6.1-4.44h7.55z" />
@@ -91,6 +96,7 @@ const Portfolio = () => {
           </p>
         </div>
       </section>
+
       <div className="flex flex-col md:flex-row items-center md:items-center gap-8 ps-[105px]">
         <h3
           className={`${sportingGrotesque.className} whitespace-nowrap text-center mt-[30px] text-[26px] font-bold leading-[41px] tracking-[-0.025em]`}
@@ -99,18 +105,24 @@ const Portfolio = () => {
           <br />
           WORKED ON
         </h3>
-        <div className="mt-[120px] flex flex-wrap items-center justify-center w-full">
+
+        {/* Fixed positioning container */}
+        <div className="relative mt-[120px] w-full min-h-[300px]">
           {brandsData?.map((brand) => (
             <div
               key={brand?.name}
-              className={`flex items-center border border-black rounded-full px-5 py-2 transition-transform duration-300 hover:scale-105 ${
-                brand?.transform
-              } ${
+              className={`absolute flex items-center border border-black rounded-full px-5 py-2 transition-transform duration-300 hover:scale-105 ${
                 brand?.special
                   ? "bg-black text-white"
                   : "bg-transparent text-black"
               }`}
-              style={{ width: brand?.width, height: brand?.height }}
+              style={{
+                width: brand?.width,
+                height: brand?.height,
+                top: brand?.position.top,
+                left: brand?.position.left,
+                transform: `rotate(${brand?.rotation})`,
+              }}
             >
               {brand?.logo}
               <span className="font-medium text-center w-full">

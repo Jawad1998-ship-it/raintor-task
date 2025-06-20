@@ -8,11 +8,11 @@ const brandsData = [
     special: true,
     width: "267.7px",
     height: "90px",
-    rotation: "12deg",
+    rotation: "11deg",
   },
   {
     name: "CSS WINNER",
-    position: { top: "120px", left: "139px" },
+    position: { top: "123px", left: "139px" },
     width: "276px",
     height: "90px",
     rotation: "0deg",
@@ -22,25 +22,25 @@ const brandsData = [
     position: { top: "101px", left: "410px" },
     width: "293.23px",
     height: "88.44px",
-    rotation: "-15deg",
+    rotation: "-14deg",
   },
   {
     name: "facebook",
-    position: { top: "-15px", left: "570px" },
+    position: { top: "-13px", left: "610px" },
     width: "276px",
     height: "90px",
     rotation: "0deg",
   },
   {
     name: "AUTODESK",
-    position: { top: "105px", left: "694px" },
+    position: { top: "123px", left: "688px" },
     width: "276px",
     height: "90px",
     rotation: "0deg",
   },
   {
     name: "CSSDesignAwards",
-    position: { top: "30px", left: "838px" },
+    position: { top: "63px", left: "868px" },
     width: "276px",
     height: "90px",
     rotation: "25deg",
@@ -107,7 +107,7 @@ const Portfolio = () => {
         </h3>
 
         {/* Fixed positioning container */}
-        <div className="relative mt-[120px] w-full min-h-[300px]">
+        <div className="relative mt-[120px] w-full min-h-[213px]">
           {brandsData?.map((brand) => (
             <div
               key={brand?.name}

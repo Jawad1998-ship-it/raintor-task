@@ -70,7 +70,7 @@ const Portfolio = () => {
             <h2
               className={`${sportingGrotesque.className} mt-[34px] text-[78px] font-bold leading-[126px] tracking-[-0.03em]`}
             >
-              I've been{" "}
+              I&apos;ve been{" "}
               <span className="bg-black text-white px-4 rounded-md inline-block">
                 Developing
               </span>

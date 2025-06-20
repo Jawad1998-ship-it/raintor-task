@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { sportingGrotesque } from "../../fonts";
+import { ProcessCardProps } from "@/types/types";
 
 const ArrowDownIcon = () => (
   <svg
@@ -26,7 +27,7 @@ const ProcessCard = ({
   bgColor,
   textColor,
   isHighlighted = false,
-}) => {
+}: ProcessCardProps) => {
   const cardVariants = {
     initial: { y: 20, opacity: 0 },
     animate: { y: 0, opacity: 1 },
@@ -135,6 +136,7 @@ export default function WorkProcessPage() {
             description="We start every new client interaction with an in-depth discovery call where we get to know each other, discuss your current and future objectives, and recommend the best course of action."
             bgColor="rgba(197, 255, 238, 1)"
             textColor="#000"
+            isHighlighted={false}
           />
           <ProcessCard
             title="Strategy"
@@ -148,12 +150,14 @@ export default function WorkProcessPage() {
             description="After we have a comprehensive understanding of your brand, we'll be ready to move onto design. Each page or will be designed, reviewed, and given your stamp of approval."
             bgColor="rgba(197, 255, 238, 1)"
             textColor="#000"
+            isHighlighted={false}
           />
           <ProcessCard
             title="Build"
             description="Whether we've just finished designing your new site or you're handing off finished designs for us to develop in Webflow, we're here to apply our trusted development process to your project."
             bgColor="rgba(197, 255, 238, 1)"
             textColor="#000"
+            isHighlighted={false}
           />
         </motion.div>
       </div>

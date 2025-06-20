@@ -20,7 +20,6 @@ const CustomerLayout = () => {
 };
 
 const CustomerWrapper = ({ children }: { children: React.ReactNode }) => {
-  console.log(children);
   return (
     <div className="flex flex-col min-h-screen w-full bg-white min-w-[1440px]">
       <CustomerLayout />

@@ -1,9 +1,10 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { useInfiniteQuery } from "@tanstack/react-query";
 import { FixedSizeList } from "react-window";
 import AutoSizer from "react-virtualized-auto-sizer";
 import { useInView } from "react-intersection-observer";
+import Image from "next/image";
 import { ErrorBoundaryProps, ErrorBoundaryState, User } from "@/types/types";
 
 const fetchUsers = async ({ pageParam = 0 }) => {
@@ -20,16 +21,18 @@ const fetchUsers = async ({ pageParam = 0 }) => {
   return data;
 };
 
-const UserCard: React.FC<{ user: User; index: number }> = ({ user, index }) => (
+const UserCard: React.FC<{ user: User }> = ({ user }) => (
   <div
     className="bg-white p-4 rounded-lg shadow-md mb-2 flex items-center focus:outline-none focus:ring-2 focus:ring-blue-500"
     tabIndex={0}
     role="listitem"
     aria-label={`User ${user.firstName} ${user.lastName}`}
   >
-    <img
+    <Image
       src={user.image}
       alt={`${user.firstName}'s avatar`}
+      width={64}
+      height={64}
       className="w-16 h-16 rounded-full mr-4"
       loading="lazy"
     />
@@ -76,8 +79,9 @@ class ErrorBoundary extends React.Component<
 }
 
 export default function UserFeed() {
-  const { ref, inView } = useInView();
+  const { ref: inViewRef, inView } = useInView();
   const [focusedIndex, setFocusedIndex] = useState(-1);
+  const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   const {
     data,
@@ -89,9 +93,13 @@ export default function UserFeed() {
   } = useInfiniteQuery({
     queryKey: ["users"],
     queryFn: fetchUsers,
+    initialPageParam: 0,
     getNextPageParam: (lastPage, allPages) => {
-      const currentSkip = allPages.length * 10;
-      return currentSkip < lastPage.total ? currentSkip : undefined;
+      if (lastPage && typeof lastPage.total === "number") {
+        const currentSkip = allPages.length * 10;
+        return currentSkip < lastPage.total ? currentSkip : undefined;
+      }
+      return undefined;
     },
   });
 
@@ -103,6 +111,12 @@ export default function UserFeed() {
       fetchNextPage();
     }
   }, [inView, hasNextPage, isFetchingNextPage, fetchNextPage]);
+
+  useEffect(() => {
+    if (focusedIndex >= 0 && cardRefs.current[focusedIndex]) {
+      cardRefs.current[focusedIndex]?.focus();
+    }
+  }, [focusedIndex]);
 
   const handleKeyDown = (
     event: React.KeyboardEvent,
@@ -161,9 +175,14 @@ export default function UserFeed() {
                       <div
                         style={style}
                         onKeyDown={(e) => handleKeyDown(e, index, users)}
-                        ref={index === users.length - 1 ? ref : undefined}
+                        ref={(el) => {
+                          cardRefs.current[index] = el;
+                          if (index === users.length - 1) {
+                            inViewRef(el);
+                          }
+                        }}
                       >
-                        <UserCard user={user} index={index} />
+                        <UserCard user={user} />
                       </div>
                     );
                   }}

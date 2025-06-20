@@ -2,6 +2,12 @@ import Link from "next/link";
 import React from "react";
 import { bwGradualDEMO, sportingGrotesque } from "../../fonts";
 
+// Define the type for FooterLink props
+interface FooterLinkProps {
+  href: string;
+  label: string;
+}
+
 const Footer = () => {
   const menuLinks = [
     { href: "/#", label: "HOME" },
@@ -23,7 +29,7 @@ const Footer = () => {
     phones: ["+784549 4981 00", "+8845 0100 211"],
   };
 
-  const FooterLink = ({ href, label }) => (
+  const FooterLink = ({ href, label }: FooterLinkProps) => (
     <a
       href={href}
       className="text-gray-300 hover:text-white transition-colors duration-300"
@@ -54,7 +60,7 @@ const Footer = () => {
               <div className="mt-[138px] mb-[131px] flex flex-col md:flex-row justify-between gap-20 mb-16 md:mb-24">
                 <div>
                   <h3
-                    className={`${sportingGrotesque.className} mb-[20px]  text-gray-500 text-start font-bold text-[16px] leading-[24px] tracking-[-0.03em]`}
+                    className={`${sportingGrotesque.className} mb-[20px] text-gray-500 text-start font-bold text-[16px] leading-[24px] tracking-[-0.03em]`}
                   >
                     Say hello
                   </h3>
@@ -63,7 +69,7 @@ const Footer = () => {
                       <Link
                         key={email}
                         href={`mailto:${email}`}
-                        className={`${sportingGrotesque.className} block text-gray-300 hover:text-white transition-colors duration-300text-start font-bold text-[16px] leading-[24px] tracking-[0%]`}
+                        className={`${sportingGrotesque.className} block text-gray-300 hover:text-white transition-colors duration-300 text-start font-bold text-[16px] leading-[24px] tracking-[0%]`}
                       >
                         {email}
                       </Link>
@@ -79,7 +85,7 @@ const Footer = () => {
                       <Link
                         key={phone}
                         href={`tel:${phone.replace(/\s/g, "")}`}
-                        className={`${sportingGrotesque.className} block text-gray-300 hover:text-white transition-colors duration-300text-start font-bold text-[16px] leading-[24px] tracking-[0%]`}
+                        className={`${sportingGrotesque.className} block text-gray-300 hover:text-white transition-colors duration-300 text-start font-bold text-[16px] leading-[24px] tracking-[0%]`}
                       >
                         {phone}
                       </Link>
@@ -98,7 +104,7 @@ const Footer = () => {
                       {menuLinks.map((link) => (
                         <li
                           key={link.label}
-                          className={`${sportingGrotesque.className} block text-gray-300 hover:text-white transition-colors duration-300text-start font-bold text-[16px] leading-[24px] tracking-[0%]`}
+                          className={`${sportingGrotesque.className} block text-gray-300 hover:text-white transition-colors duration-300 text-start font-bold text-[16px] leading-[24px] tracking-[0%]`}
                         >
                           <FooterLink href={link.href} label={link.label} />
                         </li>
@@ -116,7 +122,7 @@ const Footer = () => {
                       {socialLinks.map((link) => (
                         <li
                           key={link.label}
-                          className={`${sportingGrotesque.className} block text-gray-300 hover:text-white transition-colors duration-300text-start font-bold text-[16px] leading-[24px] tracking-[0%]`}
+                          className={`${sportingGrotesque.className} block text-gray-300 hover:text-white transition-colors duration-300 text-start font-bold text-[16px] leading-[24px] tracking-[0%]`}
                         >
                           <FooterLink href={link.href} label={link.label} />
                         </li>
@@ -138,7 +144,7 @@ const Footer = () => {
           <p
             className={`${sportingGrotesque.className} font-normal text-gray-400 text-[16px] leading-[24px] tracking-[-0.03em] text-center`}
           >
-            &copy; devlop.me 2022
+            © devlop.me 2022
           </p>
           <div className="flex space-x-4">
             <Link
@@ -148,7 +154,8 @@ const Footer = () => {
               PRIVACY
             </Link>
             <span
-              className={`${sportingGrotesque.className} font-normal text-gray-400 text-[16px] leading-[24px] tracking-[-0.03em] text-center`}
+              className={`${sportingGrotesque.className} font-normal text-gray-400 text-[16px] leadingworld: true
+                leading-[24px] tracking-[-0.03em] text-center`}
             >
               –
             </span>

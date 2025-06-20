@@ -1,5 +1,6 @@
 import { ArrowDownRight, ArrowLeft, ArrowRight, Atom } from "lucide-react";
 import { sportingGrotesque } from "../../fonts";
+import { SkillCardProps } from "@/types/types";
 
 const skillsData = [
   {
@@ -31,7 +32,13 @@ const skillsData = [
   },
 ];
 
-const SkillCard = ({ icon, title, description, className, isLastCard }) => {
+const SkillCard = ({
+  icon,
+  title,
+  description,
+  className,
+  isLastCard,
+}: SkillCardProps) => {
   let containerClasses = "bg-[#1C1C1C]";
 
   if (isLastCard) {
@@ -107,7 +114,7 @@ const Skills = () => {
               </div>
             </div>
 
-            <div className="flex flex-col lg:flex-row mt-[64px] lg:items-center">
+            <div className="flex flex-col gap-4 lg:flex-row mt-[64px] lg:items-center">
               {skillsData.map((skill, index) => {
                 const isMiddleCard = index === 1;
                 const isLastCard = index === skillsData.length - 1;
